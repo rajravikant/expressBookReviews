@@ -1,5 +1,9 @@
 let books = {
-      1: {"author": "Chinua Achebe","title": "Things Fall Apart", "reviews": {} },
+      1: {"author": "Chinua Achebe","title": "Things Fall Apart", "reviews": {
+            "user1": "This is a great book",
+            "user2": "I loved the book",
+            "user3": "I did not like the book"
+      } },
       2: {"author": "Hans Christian Andersen","title": "Fairy tales", "reviews": {} },
       3: {"author": "Dante Alighieri","title": "The Divine Comedy", "reviews": {} },
       4: {"author": "Unknown","title": "The Epic Of Gilgamesh", "reviews": {} },
@@ -12,3 +16,5 @@ let books = {
 }
 
 module.exports=books;
+
+

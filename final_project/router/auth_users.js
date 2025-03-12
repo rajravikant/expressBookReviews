@@ -66,6 +66,35 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
 
 });
 
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+  const {isbn} = req.params;
+  const user = req.user;
+  if (!isbn) {
+    return res.status(400).json({
+      message: "Please provide ISBN"
+    });
+  }
+
+  if (isbn < 1 || isbn > 10) {
+    return res.status(400).json({
+      message: "Invalid ISBN number"
+    });
+  }
+
+  if (user) {
+    delete books[isbn].reviews[user.username];
+    return res.status(200).json({
+      message: "Review deleted",
+      book: books[isbn]
+    });
+  }
+  else {
+    return res.status(403).json({
+      message: "Forbidden"
+    });
+  }
+});
+
 module.exports.authenticated = regd_users;
 module.exports.isValid = isValid;
 module.exports.users = users;
